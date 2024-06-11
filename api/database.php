@@ -4,7 +4,7 @@ class cadenaConexionBD
     static function ConexionBD()
     {
         $host = 'JSTEVEN';
-        $dbname = 'InioSesion';
+        $dbname = 'InicioSesion';
         $username = 'sa';
         $password = 5284;
 

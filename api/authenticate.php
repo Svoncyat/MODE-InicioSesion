@@ -12,7 +12,7 @@ if ($conexion) {
 
     if ($rowController) {
         echo "Inicio de sesión exitoso";
-        header("url = https://jsteven/MODE-Sesion/welcome.php");
+        
     } else {
         echo "Usuario o contraseña incorrectos";
 

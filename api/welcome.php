@@ -6,6 +6,6 @@
     <title>Bienvenida</title>
 </head>
 <body>
-    
+    <h1>Has iniciado sesión correctamente</h1>
 </body>
 </html>
