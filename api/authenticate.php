@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['attempts'])) {
+    $_SESSION['attempts'] = 0;
+}
+
+if ($_SESSION['attempts'] >= 3 && time() - $_SESSION['block'] < 30) {
+    header("Location: index.php?error=1");
+    exit;
+}
+
 require_once 'database.php';
 
 $conexion = cadenaConexionBD::ConexionBD();
@@ -11,12 +22,15 @@ if ($conexion) {
     $rowController = $model->inicioSesion();
 
     if ($rowController) {
-        echo "Inicio de sesión exitoso";
-        
+        $_SESSION['username'] = $usuario;
+        $_SESSION['attempts'] = 0;
+        header("Location: welcome.php");
     } else {
-        echo "Usuario o contraseña incorrectos";
-
-        header("refresh:2; url=http://jsteven/MODE-Sesion/");
+        $_SESSION['attempts'] += 1;
+        if ($_SESSION['attempts'] >= 3) {
+            $_SESSION['block'] = time();
+        }
+        header("Location: index.php?error=1");
         exit;
     }
 } else {

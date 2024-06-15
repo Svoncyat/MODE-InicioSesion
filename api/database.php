@@ -6,13 +6,13 @@ class cadenaConexionBD
         $host = 'JSTEVEN';
         $dbname = 'InicioSesion';
         $username = 'sa';
-        $password = 5284;
+        $password = '5284';
 
         try {
             $ccon = new PDO("sqlsrv:Server=$host; Database=$dbname", $username, $password);
             return $ccon;
         } catch (PDOException $exp) {
-            error_log("No se logro conectar a: $dbname DB - ERROR: $exp -");
+            error_log("No se logró conectar a: $dbname DB - ERROR: $exp -");
             return null;
         }
     }
